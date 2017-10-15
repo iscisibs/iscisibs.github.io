@@ -1,8 +1,3 @@
-function makeInteractive() {
-
-  $("a").attr("onclick", "alert('x')")
-}
-
 function executeSearch(searchArg) {
   // Deal with it
   d3.json("https://iscisibs.github.io/fullData.json", function(data) {
@@ -24,10 +19,12 @@ function executeSearch(searchArg) {
       .enter()
       .append("a")
       .attr("class", 'list-group-item list-group-item-action list-element')
-      .attr("id", function(d) {return d.bigsibkey})
+      .attr("id", function(d) {if (d.bigsib != "NA NA") {return d.bigsibkey}})
       .attr("onclick", "searchClick(this.id)")
       .text(function(d) {
+        if (d.bigsib != "NA NA"){
         return d.bigsib
+      }
       });
 
     // Output the little sib data
@@ -77,6 +74,8 @@ function searchText() {
 
 function searchClick(clickedid) {
 
+  $("#nameHeader").text("")
+  $("#yearHeader").text("")
   $("#bigSibList").empty();
   $("#littleSibList").empty();
 
