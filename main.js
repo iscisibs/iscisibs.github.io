@@ -19,12 +19,14 @@ function executeSearch(searchArg) {
       .enter()
       .append("a")
       .attr("class", 'list-group-item list-group-item-action list-element')
-      .attr("id", function(d) {if (d.bigsib != "NA NA") {return d.bigsibkey}})
+      .attr("id", function(d) {
+          return d.bigsibkey
+      })
       .attr("onclick", "searchClick(this.id)")
       .text(function(d) {
-        if (d.bigsib != "NA NA"){
-        return d.bigsib
-      }
+        if (d.bigsib != "NA NA") {
+          return d.bigsib
+        }
       });
 
     // Output the little sib data
@@ -34,7 +36,9 @@ function executeSearch(searchArg) {
       .enter()
       .append("a")
       .attr("class", 'list-group-item list-group-item-action list-element')
-      .attr("id", function(d) {return d.namekey})
+      .attr("id", function(d) {
+        return d.namekey
+      })
       .attr("onclick", "searchClick(this.id)")
       .text(function(d) {
         return d.name
@@ -58,8 +62,9 @@ function executeSearch(searchArg) {
 };
 
 function searchText() {
-
   // Clear the lists
+  $("#nameHeader").text("")
+  $("#yearHeader").text("")
   $("#bigSibList").empty();
   $("#littleSibList").empty();
 
@@ -74,11 +79,12 @@ function searchText() {
 
 function searchClick(clickedid) {
 
-  $("#nameHeader").text("")
-  $("#yearHeader").text("")
-  $("#bigSibList").empty();
-  $("#littleSibList").empty();
+  if (clickedid != "nana") {
+    $("#nameHeader").text("")
+    $("#yearHeader").text("")
+    $("#bigSibList").empty();
+    $("#littleSibList").empty();
 
-  executeSearch(clickedid)
-
+    executeSearch(clickedid)
+  }
 }
