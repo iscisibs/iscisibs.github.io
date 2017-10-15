@@ -63,8 +63,8 @@ function executeSearch(searchArg) {
 
 function searchText() {
   // Clear the lists
-  $("#nameHeader").text(" ")
-  $("#yearHeader").text(" ")
+  $("#nameHeader").text("...")
+  $("#yearHeader").text("...")
   $("#bigSibList").empty();
   $("#littleSibList").empty();
 
@@ -80,8 +80,8 @@ function searchText() {
 function searchClick(clickedid) {
 
   if (clickedid != "nana") {
-    $("#nameHeader").text(" ")
-    $("#yearHeader").text(" ")
+    $("#nameHeader").text("...")
+    $("#yearHeader").text("...")
     $("#bigSibList").empty();
     $("#littleSibList").empty();
 
