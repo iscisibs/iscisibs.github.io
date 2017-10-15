@@ -22,28 +22,38 @@
 </head>
 
 <body>
-  <!-- Main Container -->
   <div class="container">
-    <h1>iSci Sib Genealogy Project <sub> v.2 </sub></h1>
-
-    <hr>
-    <!-- Search -->
-    <div class="col-lg-6 input-group">
-      <input id="searchbar" type="text" class="form-control" placeholder="Search a name">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" onclick="myFunction()">Search</button>
-      </span>
-    </div>
-
+    <!-- Main Container -->
     <div class="row">
       <div class="col-lg-6">
-        <ul id="bigSibList" class="list-group"></ul>
+        <h1>iSci Sib Genealogy Project <sub> v.2 </sub></h1>
       </div>
-      <div class="col-lg-6">
-        <ul id="littleSibList" class="list-group"></ul>
-      </div>
-    </div>
+      <!-- Search -->
+      <div class="col-lg-6 input-group">
+        <input id="searchbar" type="text" class="form-control" placeholder="Search a name">
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="searchText()">Search</button>
+      </span>
 
-  </div>
-  <script src="main.js"></script>
+      </div>
+      <hr>
+      <div>
+        <h3 class="text-center" id="nameHeader">(name)</h3>
+        <h4 class="text-center" id="yearHeader">(year)</h4>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <h4> Big Sibs </h4>
+          <ul id="bigSibList" class="list-group"></ul>
+        </div>
+
+        <div class="col-lg-6">
+          <h4> Little Sibs </h4>
+          <ul id="littleSibList" class="list-group"></ul>
+        </div>
+      </div>
+
+    </div>
+    <script src="main.js"></script>
 </body>
