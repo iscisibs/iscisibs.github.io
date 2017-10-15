@@ -1,12 +1,16 @@
 # Reshape data
 
 library(tidyverse)
+library(stringr)
 library(reshape2)
+library(jsonlite)
 
 # Generate filenames
 years <- 2013:2021
 fileNames <- str_c("data/", years, ".csv")
-  
+
+fullData = tibble()
+
 for (i in seq_along(fileNames)) {
   # Read data
   df <- read_csv(fileNames[i])
@@ -20,9 +24,30 @@ for (i in seq_along(fileNames)) {
     unite("big4", c("BigSib4First", "BigSib4Last"), sep = " ") %>%
     melt(id.vars = c("Year", "name")) %>% # Make data long
     filter(value != "NA NA") %>% # Remove NA values created by unite()
-    select(-variable) # Remove redundant column
-
-  # Write .csv long version
-  write_csv(df, str_c("data/", years[i], "_long.csv"))
+    
+    # Construct a key for the name
+    mutate(namekey = str_to_lower(name)) %>%
+    mutate(namekey = str_replace_all(namekey, "[[:punct:]]", "")) %>% # Remove punctuation
+    mutate(namekey = str_replace_all(namekey, " ", "")) %>%
+    
+    # The Big Sib
+    mutate(bigsib = value) %>%
+    
+    # Construct keys for bigsibs
+    mutate(bigsibkey = str_to_lower(bigsib)) %>%
+    mutate(bigsibkey = str_replace_all(bigsibkey, "[[:punct:]]", "")) %>% # Remove punctuation
+    mutate(bigsibkey = str_replace_all(bigsibkey, " ", "")) %>%
+    
+    # Change the variable name to lowercase
+    mutate(year = Year) %>%
+    
+    # Throw away unnecessary columns
+    select(-Year, -value, -variable)
+  
+  fullData <- rbind(fullData, df) 
 }
+
+# Write a .json
+write_json(fullData, "fullData.json")
+
 
