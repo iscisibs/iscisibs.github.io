@@ -25,14 +25,18 @@ function myFunction() {
         .selectAll("li")
         .data(bigSibs)
         .enter()
-        .append("li").text(function(d) {return d.bigsib});
+        .append("a")
+        .attr('class', 'list-group-item list-group-item-action')
+        .text(function(d) {return d.bigsib});
 
     // Output the little sib data
       d3.select("#littleSibList")
          .selectAll("li")
          .data(littleSibs)
          .enter()
-         .append("li").text(function(d) {return d.name})
+         .append("a")
+         .attr('class', 'list-group-item list-group-item-action')
+         .text(function(d) {return d.name})
    });
 
 

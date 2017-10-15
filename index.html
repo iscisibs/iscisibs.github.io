@@ -29,16 +29,21 @@
     <hr>
     <!-- Search -->
     <div class="col-lg-6 input-group">
-      <input id = "searchbar" type="text" class="form-control" placeholder="Search a name">
+      <input id="searchbar" type="text" class="form-control" placeholder="Search a name">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" onclick="myFunction()">Search</button>
       </span>
     </div>
-    <!-- Visualization container -->
-    <ul id = "bigSibList"></ul>
-    <ul id = "littleSibList"></ul>
 
+    <div class="row">
+      <div class="col-lg-6">
+        <ul id="bigSibList" class="list-group"></ul>
+      </div>
+      <div class="col-lg-6">
+        <ul id="littleSibList" class="list-group"></ul>
+      </div>
+    </div>
 
   </div>
-  <script src = "main.js"></script>
+  <script src="main.js"></script>
 </body>
