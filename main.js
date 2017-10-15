@@ -1,44 +1,63 @@
+function makeInteractive() {
+
+  $("a").attr("onclick", "alert('x')")
+}
+
 function executeSearch(searchArg) {
   // Deal with it
-  d3.json("https://iscisibs.github.io/fullData.json", function(data){
+  d3.json("https://iscisibs.github.io/fullData.json", function(data) {
 
     // Record JSON elements with search argument as the "name"
     var bigSibs = data.filter(function(d) {
-     return d.namekey == searchArg;
-   });
+      return d.namekey == searchArg;
+    });
 
-   // Record JSON elements with search argument as the "bigsib"
+    // Record JSON elements with search argument as the "bigsib"
     var littleSibs = data.filter(function(d) {
       return d.bigsibkey == searchArg;
     });
 
     //Output the big sib data
-     d3.select("#bigSibList")
-        .selectAll("li")
-        .data(bigSibs)
-        .enter()
-        .append("a")
-        .attr('class', 'list-group-item list-group-item-action list-element')
-        .text(function(d) {return d.bigsib});
+    d3.select("#bigSibList")
+      .selectAll("a")
+      .data(bigSibs)
+      .enter()
+      .append("a")
+      .attr("class", 'list-group-item list-group-item-action list-element')
+      .attr("id", function(d) {return d.bigsibkey})
+      .attr("onclick", "searchClick(this.id)")
+      .text(function(d) {
+        return d.bigsib
+      });
 
     // Output the little sib data
-      d3.select("#littleSibList")
-         .selectAll("li")
-         .data(littleSibs)
-         .enter()
-         .append("a")
-         .attr('class', 'list-group-item list-group-item-action list-element')
-         .text(function(d) {return d.name});
+    d3.select("#littleSibList")
+      .selectAll("a")
+      .data(littleSibs)
+      .enter()
+      .append("a")
+      .attr("class", 'list-group-item list-group-item-action list-element')
+      .attr("id", function(d) {return d.namekey})
+      .attr("onclick", "searchClick(this.id)")
+      .text(function(d) {
+        return d.name
+      });
 
-      d3.select("#yearHeader")
-        .data(bigSibs)
-        .text(function(d) {return d.year})
+    d3.select("#yearHeader")
+      .data(bigSibs)
+      .text(function(d) {
+        return d.year
+      })
 
-      d3.select("#nameHeader")
-        .data(bigSibs)
-        .text(function(d) {return d.name})
+    d3.select("#nameHeader")
+      .data(bigSibs)
+      .attr("onclick", "makeInteractive()")
+      .text(function(d) {
+        return d.name
+      })
+  });
 
-   });
+
 };
 
 function searchText() {
@@ -50,8 +69,17 @@ function searchText() {
   // Grab what was searched
   var searchInput = $("#searchbar")
     .val()
-    .replace(/\s+/g, '')
+    .replace(/[^\w]|_/g, "")
     .toLowerCase();
 
   executeSearch(searchInput);
 };
+
+function searchClick(clickedid) {
+
+  $("#bigSibList").empty();
+  $("#littleSibList").empty();
+
+  executeSearch(clickedid)
+
+}
