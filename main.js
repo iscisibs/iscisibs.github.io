@@ -63,8 +63,8 @@ function executeSearch(searchArg) {
 
 function searchText() {
   // Clear the lists
-  $("#nameHeader").text("")
-  $("#yearHeader").text("")
+  $("#nameHeader").text(" ")
+  $("#yearHeader").text(" ")
   $("#bigSibList").empty();
   $("#littleSibList").empty();
 
@@ -80,11 +80,19 @@ function searchText() {
 function searchClick(clickedid) {
 
   if (clickedid != "nana") {
-    $("#nameHeader").text("")
-    $("#yearHeader").text("")
+    $("#nameHeader").text(" ")
+    $("#yearHeader").text(" ")
     $("#bigSibList").empty();
     $("#littleSibList").empty();
 
     executeSearch(clickedid)
   }
 }
+
+// So that enter submits the search
+$('input[type=text]').on('keydown', function(e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        searchText();
+    }
+});
