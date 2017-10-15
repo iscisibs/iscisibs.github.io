@@ -1,15 +1,33 @@
-// Pre-amble-ish stuff
-var svg = d3.select("svg"),
-  width = +svg.attr("width"),
-  height = +svg.attr("height");
+function myFunction() {
 
-var color = d3.scaleOrdinal(d3.schemeCategory20);
+  // Clear the lists
+  $("#bigSibList").empty();
+  $("#littleSibList").empty();
 
-var csvfile = "data/2014.csv";
-var arr = new Array(); // Array to hold data
+  // Grab what was searched
+  var searchArg = $("#searchbar").val();
 
-// Import data
-d3.csv("data/2014.csv", function(data) {
-  arr[2014]= data // Hold data for year i in arr[i]
-  console.log(arr)
-})
+  // Deal with it
+  d3.json("https://iscisibs.github.io/fullData.json", function(data) {
+    var bigSibs = data.filter(function(d) {
+     return d.name == searchArg;
+   });
+    var littleSibs = data.filter(function(d) {
+      return d.bigsib == searchArg;
+    });
+
+     d3.select("#bigSibList")
+        .selectAll("li")
+        .data(bigSibs)
+        .enter()
+        .append("li").text(function(d) {return d.bigsib});
+
+      d3.select("#littleSibList")
+         .selectAll("li")
+         .data(littleSibs)
+         .enter()
+         .append("li").text(function(d) {return d.name})
+   });
+
+
+}
