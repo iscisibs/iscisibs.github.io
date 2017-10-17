@@ -23,29 +23,41 @@ for (i in seq_along(fileNames)) {
     unite("big3", c("BigSib3First", "BigSib3Last"), sep = " ") %>%
     unite("big4", c("BigSib4First", "BigSib4Last"), sep = " ") %>%
     melt(id.vars = c("Year", "name")) %>% # Make data long
-    filter(value != "NA NA") %>% # Remove NA values created by unite()
+    filter((!duplicated(name)) | (value != "NA NA")) %>% # Remove NA values created by unite()
+    # Change the variable name to lowercase
+    mutate(year = Year) %>%
+    
+    # The Big Sib
+    mutate(bigsib = value) %>%
+    
+    # Throw away unnecessary columns
+    select(-Year, -value, -variable) %>%
     
     # Construct a key for the name
     mutate(namekey = str_to_lower(name)) %>%
     mutate(namekey = str_replace_all(namekey, "[[:punct:]]", "")) %>% # Remove punctuation
     mutate(namekey = str_replace_all(namekey, " ", "")) %>%
-    
-    # The Big Sib
-    mutate(bigsib = value) %>%
-    
+  
     # Construct keys for bigsibs
     mutate(bigsibkey = str_to_lower(bigsib)) %>%
     mutate(bigsibkey = str_replace_all(bigsibkey, "[[:punct:]]", "")) %>% # Remove punctuation
-    mutate(bigsibkey = str_replace_all(bigsibkey, " ", "")) %>%
-    
-    # Change the variable name to lowercase
-    mutate(year = Year) %>%
-    
-    # Throw away unnecessary columns
-    select(-Year, -value, -variable)
+    mutate(bigsibkey = str_replace_all(bigsibkey, " ", "")) 
   
   fullData <- rbind(fullData, df) 
 }
+
+correctionAdd <- read_csv("additions.csv") %>%
+  mutate(namekey = str_to_lower(name)) %>%
+  mutate(namekey = str_replace_all(namekey, "[[:punct:]]", "")) %>% # Remove punctuation
+  mutate(namekey = str_replace_all(namekey, " ", "")) %>%
+  
+  # Construct keys for bigsibs
+  mutate(bigsibkey = str_to_lower(bigsib)) %>%
+  mutate(bigsibkey = str_replace_all(bigsibkey, "[[:punct:]]", "")) %>% # Remove punctuation
+  mutate(bigsibkey = str_replace_all(bigsibkey, " ", "")) 
+
+fullData <- rbind(fullData, correctionAdd) %>%
+  filter((!duplicated(name, fromLast = T) & bigsibkey == "nana") | bigsibkey != "nana")
 
 # Write a .json
 write_json(fullData, "fullData.json")
