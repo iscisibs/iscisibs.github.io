@@ -56,6 +56,24 @@ function executeSearch(searchArg) {
       .text(function(d) {
         return d.name
       })
+
+    d3.select("#bigSibHeader")
+    .data(bigSibs)
+    .text(function(d) {
+      // Grab first name
+      fn = d.name.substr(0, d.name.indexOf(' '))
+
+      // Make "Michael's Big Sibs"
+      return fn.concat("'s Big Sibs")
+    })
+
+    d3.select("#littleSibHeader")
+    .data(bigSibs)
+    .text(function(d) {
+      fn = d.name.substr(0, d.name.indexOf(' '))
+      return fn.concat("'s Little Sibs")
+    })
+
   });
 
 
@@ -63,8 +81,11 @@ function executeSearch(searchArg) {
 
 function searchText() {
   // Clear the lists
-  $("#nameHeader").text("...")
-  $("#yearHeader").text("...")
+  $("#nameHeader").text("...");
+  $("#yearHeader").text("...");
+  $("#bigSibHeader").text("Big Sibs");
+  $("#littleSibHeader").text("Little Sibs")
+
   $("#bigSibList").empty();
   $("#littleSibList").empty();
 
