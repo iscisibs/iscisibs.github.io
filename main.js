@@ -92,7 +92,7 @@ function searchText() {
   // Grab what was searched
   var searchInput = $('#searchbar')
     .find(":selected")
-    .text()
+    .val()
     .replace(/[^\w]|_/g, "")
     .toLowerCase();
 

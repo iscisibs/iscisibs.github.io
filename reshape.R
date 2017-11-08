@@ -62,4 +62,10 @@ fullData <- rbind(fullData, correctionAdd) %>%
 # Write a .json
 write_json(fullData, "fullData.json")
 
+# Make names for autocomplete
+nameList <- fullData %>%
+  filter(!duplicated(name)) %>%
+  mutate(id = name, text = name) %>% 
+  select(id, text)
 
+write_json(nameList, "nameList.json")
