@@ -20,7 +20,7 @@ function executeSearch(searchArg) {
       .append("a")
       .attr("class", 'list-group-item list-group-item-action list-element')
       .attr("id", function(d) {
-          return d.bigsibkey
+        return d.bigsibkey
       })
       .attr("onclick", "searchClick(this.id)")
       .text(function(d) {
@@ -58,21 +58,21 @@ function executeSearch(searchArg) {
       })
 
     d3.select("#bigSibHeader")
-    .data(bigSibs)
-    .text(function(d) {
-      // Grab first name
-      fn = d.name.substr(0, d.name.indexOf(' '))
+      .data(bigSibs)
+      .text(function(d) {
+        // Grab first name
+        fn = d.name.substr(0, d.name.indexOf(' '))
 
-      // Make "Michael's Big Sibs"
-      return fn.concat("'s Big Sibs")
-    })
+        // Make "Michael's Big Sibs"
+        return fn.concat("'s Big Sibs")
+      })
 
     d3.select("#littleSibHeader")
-    .data(bigSibs)
-    .text(function(d) {
-      fn = d.name.substr(0, d.name.indexOf(' '))
-      return fn.concat("'s Little Sibs")
-    })
+      .data(bigSibs)
+      .text(function(d) {
+        fn = d.name.substr(0, d.name.indexOf(' '))
+        return fn.concat("'s Little Sibs")
+      })
 
   });
 
@@ -90,8 +90,9 @@ function searchText() {
   $("#littleSibList").empty();
 
   // Grab what was searched
-  var searchInput = $("#searchbar")
-    .val()
+  var searchInput = $('#searchbar')
+    .find(":selected")
+    .text()
     .replace(/[^\w]|_/g, "")
     .toLowerCase();
 
@@ -110,10 +111,20 @@ function searchClick(clickedid) {
   }
 }
 
-// So that enter submits the search
-$('input[type=text]').on('keydown', function(e) {
-    if (e.which == 13) {
-        e.preventDefault();
-        searchText();
-    }
+
+$(document).ready(function() {
+  $.getJSON("https://iscisibs.github.io/nameList.json", function(data) {
+    //data is the JSON string
+    $('.js-example-basic-single').select2({
+      placeholder: "Select a name...",
+      data: data,
+      allowClear: true
+    });
+  });
+  // In your Javascript (external .js resource or <script> tag)
 });
+
+
+$("#searchbar").on('select2:select', function(e) {
+  searchText();
+})
