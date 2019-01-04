@@ -6,7 +6,7 @@ library(reshape2)
 library(jsonlite)
 
 # Generate filenames
-years <- 2013:2021
+years <- 2013:2022
 fileNames <- str_c("data/", years, ".csv")
 
 fullData = tibble()
