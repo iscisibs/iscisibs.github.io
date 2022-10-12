@@ -1,48 +1,81 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
   <title>iSci Sib Genealogy Project</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2022.6">
-  <style type="text/css">
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #000000; color: rgba(0, 0, 0, 0.85); -webkit-text-stroke: rgba(0, 0, 0, 0.85); background-color: #ffffff; min-height: 13.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #000000; color: rgba(0, 0, 0, 0.85); -webkit-text-stroke: rgba(0, 0, 0, 0.85); min-height: 13.0px}
-    p.p4 {margin: 0.0px 0.0px 6.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
-    p.p9 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #000000; color: rgba(0, 0, 0, 0.85); -webkit-text-stroke: rgba(0, 0, 0, 0.85); background-color: #b3b3b3}
-    p.p11 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; color: #6d6d6d; -webkit-text-stroke: #6d6d6d}
-    li.li7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 20.0px 'Helvetica Light'; font-kerning: none}
-    span.s3 {font-kerning: none; background-color: #ffffff}
-    span.s4 {font: 12.0px Times; font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
-    span.s5 {font: 12.0px Times; text-decoration: underline ; font-kerning: none; color: #0000e9; -webkit-text-stroke: 0px #0000e9}
-    span.s6 {text-decoration: underline ; font-kerning: none; color: #0000e9; -webkit-text-stroke: 0px #0000e9}
-    ul.ul1 {list-style-type: disc}
-  </style>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Roboto font-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="style.css" , rel="stylesheet">
+
+  <!-- d3 -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <!-- select2-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+
+
 </head>
+
 <body>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px 'Helvetica Light'; color: #262626; -webkit-text-stroke: #262626"><span class="s1">iSci Sib Genealogy Project </span><span class="s2"><sub>v.2<span class="Apple-converted-space"> </span></sub></span></h1>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span></span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">        </span></span><span class="s4"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"></span><br></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px 'Helvetica Light'; color: #262626; -webkit-text-stroke: #262626"><span class="s1">(name)</span></h3>
-<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px 'Helvetica Light'; color: #262626; -webkit-text-stroke: #262626"><span class="s1">(year)</span></h4>
-<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px 'Helvetica Light'; color: #262626; -webkit-text-stroke: #262626"><span class="s1">Big Sibs<span class="Apple-converted-space"> </span></span></h4>
-<ul class="ul1">
-  <li class="li7"></li>
-</ul>
-<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px 'Helvetica Light'; color: #262626; -webkit-text-stroke: #262626"><span class="s1">Little Sibs<span class="Apple-converted-space"> </span></span></h4>
-<ul class="ul1">
-  <li class="li7"></li>
-</ul>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px 'Helvetica Light'; color: #262626; -webkit-text-stroke: #262626"><span class="s1">About<span class="Apple-converted-space"> </span></span></h2>
-<p class="p9"><span class="s1">This is a searchable directory of the Big Sib program of the Integrated Science (iSci) undergraduate program at McMaster University. You can learn more about iSci and the Big Sib program <a href="https://www.iscisociety.com/big-sib-program"><span class="s5">here.</span></a><span class="Apple-converted-space"> </span></span></p>
-<p class="p9"><span class="s1">The project is based on the <a href="http://www.genealogy.ams.org/"><span class="s5">Mathematics Genealogy Project</span></a>, and data made available by the <a href="https://www.iscisociety.com/"><span class="s5">iSci Society.</span></a><span class="Apple-converted-space"> </span></span></p>
-<p class="p10"><span class="s1">Submit suggestions and data revisions</span></p>
-<p class="p4"><span class="s1"></span><br></p>
-<p class="p11"><span class="s1">Created (very, very slowly) by <a href="https://michael-chong.github.io/"><span class="s5">Michael Chong.</span></a> Maintained by <a href="https://ca.linkedin.com/in/vikramarora13"><span class="s5">Vikram Arora</span></a></span><span class="s6">.</span></p>
+  <div class="container content">
+    <!-- Main Container -->
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>iSci Sib Genealogy Project <sub> v.2 </sub></h1>
+      </div>
+      <!-- Search -->
+      <div class="col-lg-6 input-group">
+        <select id="searchbar" class="js-example-basic-single">
+          <option></option>
+        </select>
+
+
+      </div>
+    </div>
+    <hr>
+    <div>
+      <h3 class="text-center" id="nameHeader">(name)</h3>
+      <h4 class="text-center" id="yearHeader">(year)</h4>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h4 id="bigSibHeader"> Big Sibs </h4>
+        <ul id="bigSibList" class="list-group"></ul>
+      </div>
+
+      <div class="col-lg-6">
+        <h4 id="littleSibHeader"> Little Sibs </h4>
+        <ul id="littleSibList" class="list-group"></ul>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+    <div class="container">
+      <h2> About </h2>
+
+
+      <p> This is a searchable directory of the Big Sib program of the Integrated Science (iSci) undergraduate program at McMaster University. You can learn more about iSci and the Big Sib program <a href="https://www.iscisociety.com/big-sib-program">here.</a>        </p>
+      <p> The project is based on the <a href="http://www.genealogy.ams.org/"> Mathematics Genealogy Project</a>, and data made available by the <a href="https://www.iscisociety.com/">iSci Society.</a> </p>
+      <button class="btn" onclick ="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScQCKHRkPFdJQ77y64wZIvrIsVAzqFW3zoxcRxtkVe6Jq9H3g/viewform?c=0&w=1'"> Submit suggestions and data revisions </button>
+
+      <hr>
+      <p style="color:grey">Created (very, very slowly) by <a href="https://michael-chong.github.io/"> Michael Chong.</a> Maintained by <a href="https://www.linkedin.com/in/kamea-bellows">  Kamea Bellows.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
-</html>
