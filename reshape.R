@@ -4,10 +4,13 @@ library(tidyverse)
 library(stringr)
 library(reshape2)
 library(jsonlite)
+library(dplyr)
+library(readr)
+library(tidyr)
 
 # Generate filenames
 years <- 2013:2027
-fileNames <- str_c("data/", years, ".csv")
+fileNames <- str_c(years, ".csv")
 
 fullData = tibble()
 
