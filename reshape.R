@@ -92,6 +92,7 @@ nameList <- fullData %>%
   arrange(-desc(namekey), .by_group = TRUE) %>%
   filter(!duplicated(name)) %>%
   mutate(id = name, text = str_c(name, " (", year, ")")) %>% 
-  select(id, text)
+  select(id, text) |>
+  filter(id != "NA NA")
 
 write_json(nameList, "nameList.json")
