@@ -10,7 +10,7 @@ library(tidyr)
 
 # Generate filenames
 years <- 2013:2027
-fileNames <- str_c(years, ".csv")
+fileNames <- str_c("data/", years, ".csv")
 
 fullData = tibble()
 
@@ -50,7 +50,7 @@ for (i in seq_along(fileNames)) {
 }
 
 # Corrections: removals
-correctionRem <- read_csv("removals.csv") %>%
+correctionRem <- read_csv("data/removals.csv") %>%
   mutate(namekey = str_to_lower(name)) %>%
   mutate(namekey = str_replace_all(namekey, "[[:punct:]]", "")) %>% # Remove punctuation
   mutate(namekey = str_replace_all(namekey, " ", "")) %>%
@@ -69,7 +69,7 @@ fullData <- fullData %>%
   select(-relkey)
   
 # Corrections: additions
-correctionAdd <- read_csv("additions.csv") %>%
+correctionAdd <- read_csv("data/additions.csv") %>%
   mutate(namekey = str_to_lower(name)) %>%
   mutate(namekey = str_replace_all(namekey, "[[:punct:]]", "")) %>% # Remove punctuation
   mutate(namekey = str_replace_all(namekey, " ", "")) %>%
