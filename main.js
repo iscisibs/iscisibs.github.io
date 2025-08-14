@@ -1,6 +1,6 @@
 function executeSearch(searchArg) {
   // Deal with it
-  d3.json("https://iscisibs.github.io/fullData.json", function(data) {
+  d3.json("fullData.json", function(data) {
 
     // Record JSON elements with search argument as the "name"
     var bigSibs = data.filter(function(d) {
@@ -113,7 +113,7 @@ function searchClick(clickedid) {
 
 
 $(document).ready(function() {
-  $.getJSON("https://iscisibs.github.io/nameList.json", function(data) {
+  $.getJSON("nameList.json", function(data) {
     //data is the JSON string
     $('.js-example-basic-single').select2({
       placeholder: "Select a name...",
